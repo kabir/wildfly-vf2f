@@ -18,14 +18,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.jboss.eap.quickstarts</groupId>
+        <groupId>org.jboss.eap.xp.quickstarts</groupId>
         <artifactId>quickstart-parent</artifactId>
         <!--
         Maintain separation between the artifact id and the version to help prevent
         merge conflicts between commits changing the GA and those changing the V.
         -->
-        <version>7.4.0.GA</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>3.0.0.GA</version>
     </parent>
     <groupId>org.wildfly.vf2f.approvals</groupId>
     <artifactId>cardapproval</artifactId>
@@ -126,6 +125,11 @@
         <dependency>
             <groupId>org.jboss.spec.javax.annotation</groupId>
             <artifactId>jboss-annotations-api_1.3_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.microprofile.metrics</groupId>
+            <artifactId>microprofile-metrics-api</artifactId>
             <scope>provided</scope>
         </dependency>
 

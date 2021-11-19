@@ -30,6 +30,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import org.eclipse.microprofile.metrics.Counter;
+import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.jboss.as.quickstart.hibernate.model.Greeting;
 
 /**
@@ -60,6 +62,7 @@ public class HelloWorld {
     @GET
     @Path("delete/{id}")
     @Transactional
+    @Counted
     public Response delete(@PathParam("id") Long id) {
         Greeting greeting = em.find(Greeting.class, id);
         if (greeting != null) {
@@ -72,6 +75,7 @@ public class HelloWorld {
     @GET
     @Path("approve/{id}")
     @Transactional
+    @Counted
     public Response approve(@PathParam("id") Long id) {
         Greeting greeting = em.find(Greeting.class, id);
         if (greeting != null) {
