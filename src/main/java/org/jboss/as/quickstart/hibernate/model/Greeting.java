@@ -53,11 +53,19 @@ public class Greeting implements Serializable {
     @Size(min = 1, max = 512)
     private String greeting;
 
-    private Type type;
+    private GreetingType type;
 
     @NotNull
     @Column(name = "manually_aproved")
     private boolean manuallyApproved;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getGreeting() {
         return greeting;
@@ -67,11 +75,11 @@ public class Greeting implements Serializable {
         this.greeting = greeting;
     }
 
-    public Type getType() {
+    public GreetingType getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(GreetingType type) {
         this.type = type;
     }
 
