@@ -33,13 +33,13 @@ import org.jboss.as.quickstart.hibernate.model.GreetingType;
  *
  */
 
-@Path("/rest")
+@Path("/")
 public class HelloWorld {
 //    @Inject
 //    EntityManager entityManager;
 
     @GET
-    //@Produces({ "application/json" })
+    @P
     public List<Greeting> getAllGreetings() {
         Greeting greeting = new Greeting();
         greeting.setId(1L);
