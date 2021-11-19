@@ -69,4 +69,17 @@ public class HelloWorld {
         return Response.ok().build();
     }
 
+    @GET
+    @Path("approve/{id}")
+    @Transactional
+    public Response approve(@PathParam("id") Long id) {
+        Greeting greeting = em.find(Greeting.class, id);
+        if (greeting != null) {
+            greeting.setManuallyApproved(true);
+            em.persist(greeting);
+        }
+        // Wrong response code but we get the idea
+        return Response.ok().build();
+    }
+
 }
