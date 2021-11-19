@@ -16,5 +16,5 @@
 --
 
 -- You can use this file to load seed data into the database using SQL statements
-insert into MemberHibernateDemo (id, name, email, phone_number, address) values (0, 'John Smith', 'john.smith@mailinator.com', '2125551212', 'Boston NY') 
-insert into MemberHibernateDemo (id, name, email, phone_number, address) values (1, 'Madhumita Sadhukhan', 'msadhukh@gmail.com', '2135551214', 'Brno CZ') 
+insert into Greeting (id, greeting, manually_approved, type) values (1, 'Happy xmas', false, 'Xmas')
+insert into Greeting (id, greeting, manually_approved, type) values (2, 'Ha ahahahah hahah!', false, 'Joke')

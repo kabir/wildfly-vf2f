@@ -53,10 +53,10 @@ public class Greeting implements Serializable {
     @Size(min = 1, max = 512)
     private String greeting;
 
-    private GreetingType type;
+    private String type;
 
     @NotNull
-    @Column(name = "manually_aproved")
+    @Column(name = "manually_approved")
     private boolean manuallyApproved;
 
     public Long getId() {
@@ -75,11 +75,11 @@ public class Greeting implements Serializable {
         this.greeting = greeting;
     }
 
-    public GreetingType getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(GreetingType type) {
+    public void setType(String type) {
         this.type = type;
     }
 

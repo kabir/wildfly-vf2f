@@ -24,7 +24,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 import org.jboss.as.quickstart.hibernate.model.Greeting;
-import org.jboss.as.quickstart.hibernate.model.GreetingType;
 
 /**
  * A simple REST service which is able to say hello to someone using HelloService Please take a look at the web.xml where JAX-RS
@@ -45,7 +44,7 @@ public class HelloWorld {
         Greeting greeting = new Greeting();
         greeting.setId(1L);
         greeting.setGreeting("Hahahaha");
-        greeting.setType(GreetingType.JOKE);
+        greeting.setType("JOKE");
         greeting.setManuallyApproved(false);
         return Collections.singletonList(greeting);
     }
