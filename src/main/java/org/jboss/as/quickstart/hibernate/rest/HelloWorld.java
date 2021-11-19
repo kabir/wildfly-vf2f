@@ -16,9 +16,13 @@
  */
 package org.jboss.as.quickstart.hibernate.rest;
 
-import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -35,18 +39,26 @@ import org.jboss.as.quickstart.hibernate.model.Greeting;
 
 @Path("/")
 public class HelloWorld {
-//    @Inject
-//    EntityManager entityManager;
+    @PersistenceContext(unitName = "primary")
+    EntityManager em;
 
     @GET
     @Produces({ "application/json" })
     public List<Greeting> getAllGreetings() {
-        Greeting greeting = new Greeting();
-        greeting.setId(1L);
-        greeting.setGreeting("Hahahaha");
-        greeting.setType("JOKE");
-        greeting.setManuallyApproved(false);
-        return Collections.singletonList(greeting);
+        // using Hibernate Session and Criteria Query via Hibernate Native API
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Greeting> query = cb.createQuery(Greeting.class);
+        Root<Greeting> greetings = query.from(Greeting.class);
+        query.where(cb.equal(greetings.get("manuallyApproved"), false));
+        return em.createQuery(query).getResultList();
+
+//        entityManager.createQuery()
+//        Greeting greeting = new Greeting();
+//        greeting.setId(1L);
+//        greeting.setGreeting("Hahahaha");
+//        greeting.setType("JOKE");
+//        greeting.setManuallyApproved(false);
+//        return Collections.singletonList(greeting);
     }
 
 }
