@@ -18,3 +18,5 @@
 -- You can use this file to load seed data into the database using SQL statements
 insert into Greeting (id, greeting, manually_approved, type) values (1, 'Happy xmas', false, 'Xmas')
 insert into Greeting (id, greeting, manually_approved, type) values (2, 'Ha ahahahah hahah!', false, 'Joke')
+insert into Greeting (id, greeting, manually_approved, type) values (3, 'Hohohohohohho', false, 'Xmas')
+insert into Greeting (id, greeting, manually_approved, type) values (4, 'Heheheheheheh!', false, 'Joke')

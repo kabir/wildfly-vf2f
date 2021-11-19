@@ -23,9 +23,12 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 import org.jboss.as.quickstart.hibernate.model.Greeting;
 
@@ -51,14 +54,19 @@ public class HelloWorld {
         Root<Greeting> greetings = query.from(Greeting.class);
         query.where(cb.equal(greetings.get("manuallyApproved"), false));
         return em.createQuery(query).getResultList();
+    }
 
-//        entityManager.createQuery()
-//        Greeting greeting = new Greeting();
-//        greeting.setId(1L);
-//        greeting.setGreeting("Hahahaha");
-//        greeting.setType("JOKE");
-//        greeting.setManuallyApproved(false);
-//        return Collections.singletonList(greeting);
+    // TODO refactor to @DELETE
+    @GET
+    @Path("delete/{id}")
+    @Transactional
+    public Response delete(@PathParam("id") Long id) {
+        Greeting greeting = em.find(Greeting.class, id);
+        if (greeting != null) {
+            em.remove(greeting);
+        }
+        // Wrong response code but we get the idea
+        return Response.ok().build();
     }
 
 }
